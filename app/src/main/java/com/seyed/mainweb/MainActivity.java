@@ -2,9 +2,20 @@ package com.seyed.mainweb;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.viewpager2.widget.CompositePageTransformer;
+import androidx.viewpager2.widget.MarginPageTransformer;
+import androidx.viewpager2.widget.ViewPager2;
+
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     TextView txtapple, txtchanghal, txtjazebe, txteghamat, txtboomgardi, txttabiatghardi, txtsafarname, txtsoghat;
@@ -15,6 +26,40 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+        ViewPager2 locationviewpager2 = findViewById(R.id.locationviewpager);
+        List<TravelLocation> travelLocations = new ArrayList<>();
+
+
+        TravelLocation travel1 = new TravelLocation();
+        travel1.imageUrl = "https://static1.koochita.com/_images/bannerPic/mainPage/16045864301593411577c416040d3fc5c22127995825e7176eb4.webp";
+        travel1.cityName = "test";
+        travelLocations.add(travel1);
+
+        TravelLocation travel2 = new TravelLocation();
+        travel2.imageUrl = "https://static1.koochita.com/_images/bannerPic/mainPage/16045863511593343025ee740455ff38b1e825a4f1d87856f843.webp";
+        travel2.cityName = "test2";
+        travelLocations.add(travel2);
+
+        locationviewpager2.setAdapter(new TravelLocationAdapter(travelLocations));
+
+
+        locationviewpager2.setClipToPadding(false);
+        locationviewpager2.setClipChildren(false);
+        locationviewpager2.setOffscreenPageLimit(3);
+        locationviewpager2.getChildAt(0).setOverScrollMode(RecyclerView.OVER_SCROLL_NEVER);
+
+        CompositePageTransformer compositePageTransformer = new CompositePageTransformer();
+        compositePageTransformer.addTransformer(new MarginPageTransformer(40));
+        compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
+            @Override
+            public void transformPage(@NonNull @NotNull View page, float position) {
+                float r = 1 - Math.abs(position);
+                page.setScaleY(0.95f + r * 0.05f);
+            }
+        });
+        locationviewpager2.setPageTransformer(compositePageTransformer);
 
         FindViewByID();
         Typface();
