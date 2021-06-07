@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">MainWeb</string>
+    <string name="ic_apple"></string>
+    <string name="ic_changhal">\uE001</string>
+    <string name="ic_jazebe">\uE002</string>
+    <string name="ic_eghamat">\uE000</string>
+    <string name="ic_boomgardi">\uE05b</string>
+    <string name="ic_tabiatghardi">\uE009</string>
+    <string name="ic_safarname">\uE0D9</string>
+</resources>
