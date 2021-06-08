@@ -39,6 +39,15 @@
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="@color/white"/>
+
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/locationsviewPager4"
+            android:layout_width="match_parent"
+            android:layout_height="185dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="40dp" />
+
     </LinearLayout>
 
 

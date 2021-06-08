@@ -13,6 +13,8 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
+import com.squareup.picasso.Picasso;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +22,9 @@ public class MainActivity extends AppCompatActivity {
     TextView txtapple, txtchanghal, txtjazebe, txteghamat, txtboomgardi, txttabiatghardi, txtsafarname, txtsoghat;
     Typeface typeface, typeface2;
     ImageView adsBanner;
-    ViewPager2 locationviewpager2;
+    ViewPager2 locationviewpager2,EghamatViewPager;
     List<TravelLocation> travelLocations;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         FindViewByID();
         ViewPager();
         Typface();
+
+
+        Picasso.get().load("https://koochita.com/images/esitrevda/gardeshgary.jpg").into(adsBanner);
 
     }
 
