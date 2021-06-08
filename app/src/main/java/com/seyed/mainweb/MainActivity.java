@@ -3,6 +3,7 @@ package com.seyed.mainweb;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,24 +13,30 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
     TextView txtapple, txtchanghal, txtjazebe, txteghamat, txtboomgardi, txttabiatghardi, txtsafarname, txtsoghat;
     Typeface typeface, typeface2;
-
-
+    ImageView adsBanner;
+    ViewPager2 locationviewpager2;
+    List<TravelLocation> travelLocations;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
 
-        ViewPager2 locationviewpager2 = findViewById(R.id.locationviewpager);
-        List<TravelLocation> travelLocations = new ArrayList<>();
+        FindViewByID();
+        ViewPager();
+        Typface();
+
+    }
+
+    public void ViewPagerItem() {
+
+        travelLocations = new ArrayList<>();
 
 
         TravelLocation travel1 = new TravelLocation();
@@ -41,6 +48,13 @@ public class MainActivity extends AppCompatActivity {
         travel2.imageUrl = "https://static1.koochita.com/_images/bannerPic/mainPage/16045863511593343025ee740455ff38b1e825a4f1d87856f843.webp";
         travel2.cityName = "test2";
         travelLocations.add(travel2);
+
+
+    }
+
+    public void ViewPager() {
+
+        ViewPagerItem();
 
         locationviewpager2.setAdapter(new TravelLocationAdapter(travelLocations));
 
@@ -54,15 +68,12 @@ public class MainActivity extends AppCompatActivity {
         compositePageTransformer.addTransformer(new MarginPageTransformer(40));
         compositePageTransformer.addTransformer(new ViewPager2.PageTransformer() {
             @Override
-            public void transformPage(@NonNull @NotNull View page, float position) {
+            public void transformPage(@NonNull View page, float position) {
                 float r = 1 - Math.abs(position);
                 page.setScaleY(0.95f + r * 0.05f);
             }
         });
         locationviewpager2.setPageTransformer(compositePageTransformer);
-
-        FindViewByID();
-        Typface();
 
     }
 
@@ -80,6 +91,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void FindViewByID() {
+        locationviewpager2 = findViewById(R.id.locationviewpager);
+        adsBanner = findViewById(R.id.adsBanner);
         txtapple = findViewById(R.id.txtapple);
         txtchanghal = findViewById(R.id.txtchanghal);
         txtjazebe = findViewById(R.id.txtjazebe);
