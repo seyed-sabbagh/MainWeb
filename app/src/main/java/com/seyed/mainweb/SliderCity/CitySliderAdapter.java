@@ -14,12 +14,12 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-public class TravelLocationAdapter extends RecyclerView.Adapter<TravelLocationAdapter.travelLocationViewHolder> {
+public class CitySliderAdapter extends RecyclerView.Adapter<CitySliderAdapter.travelLocationViewHolder> {
 
-    private final List<TravelLocation> travelLocations;
+    private final List<ItemContainerCity> itemContainerCities;
 
-    public TravelLocationAdapter(List<TravelLocation> travelLocations) {
-        this.travelLocations = travelLocations;
+    public CitySliderAdapter(List<ItemContainerCity> itemContainerCities) {
+        this.itemContainerCities = itemContainerCities;
     }
 
     @NonNull
@@ -27,7 +27,7 @@ public class TravelLocationAdapter extends RecyclerView.Adapter<TravelLocationAd
     public travelLocationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new travelLocationViewHolder(
                 LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.item_container_location,
+                        R.layout.item_container_cityname,
                         parent,
                         false
                 )
@@ -35,13 +35,13 @@ public class TravelLocationAdapter extends RecyclerView.Adapter<TravelLocationAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull TravelLocationAdapter.travelLocationViewHolder holder, int position) {
-        holder.setLocationData(travelLocations.get(position));
+    public void onBindViewHolder(@NonNull CitySliderAdapter.travelLocationViewHolder holder, int position) {
+        holder.setLocationData(itemContainerCities.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return travelLocations.size();
+        return itemContainerCities.size();
     }
 
     static class travelLocationViewHolder extends RecyclerView.ViewHolder {
@@ -55,9 +55,9 @@ public class TravelLocationAdapter extends RecyclerView.Adapter<TravelLocationAd
 
         }
 
-        void setLocationData(TravelLocation travelLocation) {
-            Picasso.get().load(travelLocation.imageUrl).into(kenBurnsView);
-            textCity.setText(travelLocation.cityName);
+        void setLocationData(ItemContainerCity itemContainerCity) {
+            Picasso.get().load(itemContainerCity.imageUrl).into(kenBurnsView);
+            textCity.setText(itemContainerCity.cityName);
         }
     }
 }

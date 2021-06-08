@@ -1,5 +1,5 @@
 package com.seyed.mainweb.SliderCity;
 
-public class TravelLocation {
+public class ItemContainerCity {
     public String cityName,imageUrl;
 }
