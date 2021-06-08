@@ -1,4 +1,4 @@
-package com.seyed.mainweb;
+package com.seyed.mainweb.SliderCity;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,6 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.seyed.mainweb.R;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
@@ -26,7 +27,7 @@ public class TravelLocationAdapter extends RecyclerView.Adapter<TravelLocationAd
     public travelLocationViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new travelLocationViewHolder(
                 LayoutInflater.from(parent.getContext()).inflate(
-                        R.layout.item_slider,
+                        R.layout.item_container_location,
                         parent,
                         false
                 )
