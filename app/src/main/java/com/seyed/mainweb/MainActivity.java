@@ -19,6 +19,8 @@ import com.seyed.mainweb.Slider.JadidTarinSafarNameSlider.ItemContainerSafarname
 import com.seyed.mainweb.Slider.JadidTarinSafarNameSlider.SafarNameAdapter;
 import com.seyed.mainweb.Slider.SliderCity.CitySliderAdapter;
 import com.seyed.mainweb.Slider.SliderCity.ItemContainerCity;
+import com.seyed.mainweb.Slider.tarikhifarhangiSlider.ItemTarikhiFarhangiSlider;
+import com.seyed.mainweb.Slider.tarikhifarhangiSlider.TarikhiFarhangiAdapter;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -28,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     TextView txtapple, txtchanghal, txtjazebe, txteghamat, txtboomgardi, txttabiatghardi, txtsafarname, txtsoghat;
     Typeface typeface, typeface2;
     ImageView adsBanner, adsBanner2, imgMap;
-    ViewPager2 cityViewPager, safarnameViewPager, ViewPagerghaza;
+    ViewPager2 cityViewPager, safarnameViewPager, ViewPagerghaza, ViewPagerTarikhiFarhangi;
     List<ItemContainerCity> itemContainerCities;
 
     @Override
@@ -42,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
         Typface();
         ViewPagerSafarname();
         ViewPagerGhaza();
+        ViewPagerTarikhiFarhangi();
 
         Picasso.get().load("https://koochita.com/images/esitrevda/gardeshgary.jpg").into(adsBanner);
         Picasso.get().load("https://koochita.com/images/esitrevda/kishBanner.jpg").into(adsBanner2);
@@ -49,23 +52,16 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void ViewPagerGhaza() {
+    public void ViewPagerTarikhiFarhangi() {
+        List<ItemTarikhiFarhangiSlider> itemTarikhiFarhangiSliders = new ArrayList<>();
 
-        List<ItemContainerGhazaSlider> itemContainerGhazaSliders = new ArrayList<>();
+        ItemTarikhiFarhangiSlider qq = new ItemTarikhiFarhangiSlider();
+        qq.tedadNaghd = "شهر اصفهان";
+        qq.cityName = "0 نقد";
+        qq.ImageURL = "https://static1.koochita.com/_images/posts/9/1583080117-mainPic.jpg";
+        itemTarikhiFarhangiSliders.add(qq);
 
-        ItemContainerGhazaSlider aa = new ItemContainerGhazaSlider();
-        aa.CityName = "aaa";
-        aa.ImageURL = "https://static1.koochita.com/_images/posts/9/1583080117-mainPic.jpg";
-        aa.Naghd = "q";
-        itemContainerGhazaSliders.add(aa);
-
-        ItemContainerGhazaSlider aaa = new ItemContainerGhazaSlider();
-        aaa.CityName = "aaa";
-        aaa.ImageURL = "https://static1.koochita.com/_images/posts/9/1583080117-mainPic.jpg";
-        aaa.Naghd = "q";
-        itemContainerGhazaSliders.add(aaa);
-
-        ViewPagerghaza.setAdapter(new GhazaAdapter(itemContainerGhazaSliders));
+        ViewPagerTarikhiFarhangi.setAdapter(new TarikhiFarhangiAdapter(itemTarikhiFarhangiSliders));
     }
 
     public void ViewPagerSafarname() {
@@ -86,6 +82,25 @@ public class MainActivity extends AppCompatActivity {
 
         safarnameViewPager.setAdapter(new SafarNameAdapter(itemContainerSafarnameSliders));
 
+    }
+
+    public void ViewPagerGhaza() {
+
+        List<ItemContainerGhazaSlider> itemContainerGhazaSliders = new ArrayList<>();
+
+        ItemContainerGhazaSlider aa = new ItemContainerGhazaSlider();
+        aa.CityName = "aaa";
+        aa.ImageURL = "https://static1.koochita.com/_images/posts/9/1583080117-mainPic.jpg";
+        aa.Naghd = "q";
+        itemContainerGhazaSliders.add(aa);
+
+        ItemContainerGhazaSlider aaa = new ItemContainerGhazaSlider();
+        aaa.CityName = "aaa";
+        aaa.ImageURL = "https://static1.koochita.com/_images/posts/9/1583080117-mainPic.jpg";
+        aaa.Naghd = "q";
+        itemContainerGhazaSliders.add(aaa);
+
+        ViewPagerghaza.setAdapter(new GhazaAdapter(itemContainerGhazaSliders));
     }
 
     public void ViewPagerItemCity() {
@@ -145,6 +160,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void FindViewByID() {
+        ViewPagerTarikhiFarhangi = findViewById(R.id.ViewPagerTarikhiFarhangi);
         imgMap = findViewById(R.id.imgMap);
         ViewPagerghaza = findViewById(R.id.ViewPagerghaza);
         adsBanner2 = findViewById(R.id.adsBanner2);
