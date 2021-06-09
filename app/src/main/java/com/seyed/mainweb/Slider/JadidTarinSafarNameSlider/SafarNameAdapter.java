@@ -1,5 +1,6 @@
-package com.seyed.mainweb.JadidTarinSafarNameSlider;
+package com.seyed.mainweb.Slider.JadidTarinSafarNameSlider;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,11 +18,11 @@ import org.jetbrains.annotations.NotNull;
 import java.util.List;
 
 
-public class TravelLocationAdapter extends RecyclerView.Adapter<TravelLocationAdapter.TravelLocationViewHolder> {
-    private List<TravelLocation> travelLocations;
+public class SafarNameAdapter extends RecyclerView.Adapter<SafarNameAdapter.TravelLocationViewHolder> {
+    private List<ItemContainerSafarnameSlider> itemContainerSafarnameSliders;
 
-    public TravelLocationAdapter(List<TravelLocation> travelLocations) {
-        this.travelLocations = travelLocations;
+    public SafarNameAdapter(List<ItemContainerSafarnameSlider> itemContainerSafarnameSliders) {
+        this.itemContainerSafarnameSliders = itemContainerSafarnameSliders;
     }
 
     @NonNull
@@ -36,13 +37,13 @@ public class TravelLocationAdapter extends RecyclerView.Adapter<TravelLocationAd
     }
 
     @Override
-    public void onBindViewHolder(@NonNull @NotNull TravelLocationAdapter.TravelLocationViewHolder holder, int position) {
-        holder.SetLocationData(travelLocations.get(position));
+    public void onBindViewHolder(@NonNull @NotNull SafarNameAdapter.TravelLocationViewHolder holder, int position) {
+        holder.SetLocationData(itemContainerSafarnameSliders.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return travelLocations.size();
+        return itemContainerSafarnameSliders.size();
     }
 
     static class TravelLocationViewHolder extends RecyclerView.ViewHolder {
@@ -58,10 +59,12 @@ public class TravelLocationAdapter extends RecyclerView.Adapter<TravelLocationAd
             textViewNaghd = itemView.findViewById(R.id.textViewNaghd2);
         }
 
-        void SetLocationData(TravelLocation travelLocation) {
-            Picasso.get().load(travelLocation.ImageURL).into(Image);
-            txtTitleCityNam.setText(travelLocation.cityName);
-            textViewNaghd.setText(travelLocation.tedadNaghd);
+        void SetLocationData(ItemContainerSafarnameSlider itemContainerSafarnameSlider) {
+
+            Picasso.get().load(itemContainerSafarnameSlider.ImageURL).into(Image);
+            txtTitleCityNam.setText(itemContainerSafarnameSlider.cityName);
+            textViewNaghd.setText(itemContainerSafarnameSlider.tedadNaghd);
+            Log.d("TAG", "SetLocationData: " + itemContainerSafarnameSlider.cityName);
         }
     }
 

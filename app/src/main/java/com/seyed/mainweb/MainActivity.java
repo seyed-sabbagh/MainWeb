@@ -13,10 +13,12 @@ import androidx.viewpager2.widget.CompositePageTransformer;
 import androidx.viewpager2.widget.MarginPageTransformer;
 import androidx.viewpager2.widget.ViewPager2;
 
-import com.seyed.mainweb.JadidTarinSafarNameSlider.TravelLocation;
-import com.seyed.mainweb.JadidTarinSafarNameSlider.TravelLocationAdapter;
-import com.seyed.mainweb.SliderCity.CitySliderAdapter;
-import com.seyed.mainweb.SliderCity.ItemContainerCity;
+import com.seyed.mainweb.Slider.GhazaSlider.GhazaAdapter;
+import com.seyed.mainweb.Slider.GhazaSlider.ItemContainerGhazaSlider;
+import com.seyed.mainweb.Slider.JadidTarinSafarNameSlider.ItemContainerSafarnameSlider;
+import com.seyed.mainweb.Slider.JadidTarinSafarNameSlider.SafarNameAdapter;
+import com.seyed.mainweb.Slider.SliderCity.CitySliderAdapter;
+import com.seyed.mainweb.Slider.SliderCity.ItemContainerCity;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     TextView txtapple, txtchanghal, txtjazebe, txteghamat, txtboomgardi, txttabiatghardi, txtsafarname, txtsoghat;
     Typeface typeface, typeface2;
     ImageView adsBanner, adsBanner2, imgMap;
-    ViewPager2 cityViewPager, safarnameViewPager;
+    ViewPager2 cityViewPager, safarnameViewPager, ViewPagerghaza;
     List<ItemContainerCity> itemContainerCities;
 
     @Override
@@ -39,6 +41,7 @@ public class MainActivity extends AppCompatActivity {
         ViewPagerCity();
         Typface();
         ViewPagerSafarname();
+        ViewPagerGhaza();
 
         Picasso.get().load("https://koochita.com/images/esitrevda/gardeshgary.jpg").into(adsBanner);
         Picasso.get().load("https://koochita.com/images/esitrevda/kishBanner.jpg").into(adsBanner2);
@@ -46,23 +49,42 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void ViewPagerGhaza() {
+
+        List<ItemContainerGhazaSlider> itemContainerGhazaSliders = new ArrayList<>();
+
+        ItemContainerGhazaSlider aa = new ItemContainerGhazaSlider();
+        aa.CityName = "aaa";
+        aa.ImageURL = "https://static1.koochita.com/_images/posts/9/1583080117-mainPic.jpg";
+        aa.Naghd = "q";
+        itemContainerGhazaSliders.add(aa);
+
+        ItemContainerGhazaSlider aaa = new ItemContainerGhazaSlider();
+        aaa.CityName = "aaa";
+        aaa.ImageURL = "https://static1.koochita.com/_images/posts/9/1583080117-mainPic.jpg";
+        aaa.Naghd = "q";
+        itemContainerGhazaSliders.add(aaa);
+
+        ViewPagerghaza.setAdapter(new GhazaAdapter(itemContainerGhazaSliders));
+    }
+
     public void ViewPagerSafarname() {
 
-        List<TravelLocation> travelLocations = new ArrayList<>();
+        List<ItemContainerSafarnameSlider> itemContainerSafarnameSliders = new ArrayList<>();
 
-        TravelLocation tet = new TravelLocation();
+        ItemContainerSafarnameSlider tet = new ItemContainerSafarnameSlider();
         tet.tedadNaghd = "شهر اصفهان";
         tet.cityName = "0 نقد";
         tet.ImageURL = "https://static1.koochita.com/_images/posts/9/1583080117-mainPic.jpg";
-        travelLocations.add(tet);
+        itemContainerSafarnameSliders.add(tet);
 
-        TravelLocation tett = new TravelLocation();
+        ItemContainerSafarnameSlider tett = new ItemContainerSafarnameSlider();
         tett.tedadNaghd = "0 نقدر";
         tett.cityName = "اصفهان ";
         tett.ImageURL = "https://static1.koochita.com/_images/posts/9/1583080117-mainPic.jpg";
-        travelLocations.add(tett);
+        itemContainerSafarnameSliders.add(tett);
 
-        safarnameViewPager.setAdapter(new TravelLocationAdapter(travelLocations));
+        safarnameViewPager.setAdapter(new SafarNameAdapter(itemContainerSafarnameSliders));
 
     }
 
@@ -124,6 +146,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void FindViewByID() {
         imgMap = findViewById(R.id.imgMap);
+        ViewPagerghaza = findViewById(R.id.ViewPagerghaza);
         adsBanner2 = findViewById(R.id.adsBanner2);
         safarnameViewPager = findViewById(R.id.ViewPager22);
         cityViewPager = findViewById(R.id.cityViewPager);

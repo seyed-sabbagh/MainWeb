@@ -1,4 +1,4 @@
-package com.seyed.mainweb.SliderCity;
+package com.seyed.mainweb.Slider.SliderCity;
 
 import android.view.LayoutInflater;
 import android.view.View;
